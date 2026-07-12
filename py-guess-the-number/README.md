@@ -1,7 +1,6 @@
 # 🎯 Guess The Number — CLI Python Game
 
 [![Python Version](https://img.shields.io/badge/python-3.6%2B-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Shovanmondal63/Python/tree/main/py-guess-the-number)
 
 An interactive, retro-styled Command Line Interface (CLI) number guessing game written in Python. Players can define their own mathematical playground by configuring the custom minimum and maximum ranges. The game tracks performance and awards custom gamer ranks based on how efficiently the secret number is cracked!
