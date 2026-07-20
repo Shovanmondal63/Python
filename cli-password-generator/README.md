@@ -89,6 +89,4 @@ If you're looking to fork and expand this project, here are some ideas:
 Contributions, issues, and feature requests are welcome! 
 Feel free to check out the [issues page](https://github.com/Shovanmondal63/cli-password-generator/issues) if you want to contribute.
 
-## 📝 License
 
-This project is open-source and available under the [MIT License](LICENSE).
