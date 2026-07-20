@@ -31,7 +31,7 @@ All you need is **Python 3.x** installed on your system. No external libraries o
 
 1. Clone this repository to your local machine:
    ```bash
-   git clone https://github.com/yourusername/cli-password-generator.git
+   git clone https://github.com/Shovanmondal63/cli-password-generator.git
    ```
 2. Navigate into the project directory:
    ```bash
