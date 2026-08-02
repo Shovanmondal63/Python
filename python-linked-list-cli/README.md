@@ -27,12 +27,12 @@ A simple command-line application built in Python that demonstrates the core ope
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Shovanmondal63/Python/python-linked-list-cli.git
+   git clone https://github.com/Shovanmondal63/Python/tree/main/python-linked-list-cli
    cd Python
    ```
 2. Run the script:
    ```bash
-   python linked_list.py
+   python linked_list_menu.py
    ```
 
 ## Usage
