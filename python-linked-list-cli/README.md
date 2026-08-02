@@ -15,11 +15,9 @@ A simple command-line application built in Python that demonstrates the core ope
 
 ```
 .
-├── linked_list.py   # Main script containing Node, Linkedlist classes and CLI logic
+├── linked_list_menu.py   # Main script containing Node, Linkedlist classes and CLI logic
 └── README.md
 ```
-
-> Note: rename `untitled1.py` to something like `linked_list.py` before/after uploading for clarity.
 
 ## Requirements
 
@@ -29,8 +27,8 @@ A simple command-line application built in Python that demonstrates the core ope
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/<your-repo-name>.git
-   cd <your-repo-name>
+   git clone https://github.com/Shovanmondal63/Python.git
+   cd Python
    ```
 2. Run the script:
    ```bash
