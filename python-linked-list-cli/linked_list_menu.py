@@ -1,195 +1,196 @@
+# Import the os module for operating system related functions.
 import os
 
+
+# Function to clear the terminal screen.
 def clear_screen():
     """Clears the terminal screen based on the operating system."""
     # 'cls' for Windows (nt), 'clear' for Linux/macOS
     os.system("cls" if os.name == "nt" else "clear")
 
 
+# Node class represents a single node of the linked list.
 class Node:
-    """Represents an individual node in a singly linked list."""
-
     def __init__(self, data):
-        self.data = data  # Holds the value of the node
-        self.next = None  # Pointer/reference to the next node in the list
+        self.data = data
+        self.next = None
 
 
-class Linkedlist:
-    """Implements a Singly Linked List and its core operations."""
-
+# Linked_list class contains all linked list operations.
+class Linked_list:
     def __init__(self):
-        # Initialize an empty linked list with head pointer set to None
         self.head = None
 
-    def append(self, val):
-        """Appends a new node with the given value to the end of the list."""
-        new_node = Node(val)
+    # Insert one or more values at the end of the linked list.
+    def append(self):
+        loop = "y"
+        print("-" * 10, "Data insert in Linked List", "-" * 10)
+        while (loop == "y"):
+            value = int(input("Enter a value:"))
+            new_node = Node(value)
+            if (self.head == None):
+                self.head = new_node
+                print(new_node.data, "insert successfully in Linked List...\n")
+            else:
+                current = self.head
+                while (current.next != None):
+                    current = current.next
+                current.next = new_node
+                print(new_node.data, "insert successfully in Linked List...\n")
+            loop = input("Do you want to continue(y / n):")
 
-        # If list is empty, set the new node as head
-        if self.head is None:
-            self.head = new_node
-            print(f"{new_node.data} inserted successfully.\n")
-        else:
-            # Traverse to the last node
-            current = self.head
-            while current.next is not None:
-                current = current.next
 
-            # Link the last node to the new node
-            current.next = new_node
-            print(f"{new_node.data} inserted successfully.\n")
-
+    # Display all elements of the linked list.
     def display(self):
-        """Prints all values present in the linked list from head to end."""
-        if self.head is None:
-            print("LinkedList is Empty!\n")
+        print("-" * 10, "All data in Linked List", "-" * 10)
+        if(self.head == None):
+            print("Linked List is empty!!!\n")
         else:
             current = self.head
-            print("\nAll data in LinkedList:")
-            # Traverse and output node values formatted with arrows
-            while current is not None:
-                print(current.data, end=" -> ")
+            print("Linked List value: ")
+            while(current != None):
+                print(current.data,end="->")
                 current = current.next
             print("None")
 
-    def insert_at(self, value, position):
-        """Inserts a new node with 'value' at a specified 0-based 'position'."""
-        new_node = Node(value)
 
-        # Case 1: Attempting to insert into an empty list
-        if self.head is None:
-            print("LinkedList is Empty!\n")
-            input("Press Enter to continue...")
-
-        # Case 2: Insert at position 0 (new head node)
-        elif position == 0:
-            new_node.next = self.head
-            self.head = new_node
-            print(f"{new_node.data} inserted successfully at position 0.\n")
-            input("Press Enter to continue...")
-
-        # Case 3: Insert at a middle or end position
-        else:
-            count = 0
-            current = self.head
-            prev = None
-
-            # Traverse until reaching the requested position
-            while count != position and current is not None:
-                prev = current
-                current = current.next
-                count += 1
-
-            # Rewire pointers to place new_node between prev and current
-            prev.next = new_node
-            new_node.next = current
-            print(f"{value} inserted successfully at position {position}.\n")
-            input("Press Enter to continue...")
-
-    def delnode(self, value):
-        """Deletes the first occurrence of a node containing 'value'."""
-        current = self.head
-        prev = None
-
-        # Case 1: Empty list check
-        if self.head is None:
-            print("LinkedList is Empty!!!")
-            input("Press Enter to continue...")
-            clear_screen()
-
-        # Case 2: Node to delete is the head node
-        elif current.data == value:
-            self.head = current.next
-            current = None
-            print(f"{value} is deleted from LinkedList...")
-            input("Press Enter to continue...")
-            clear_screen()
-
-        # Case 3: Search for the node in the rest of the list
-        else:
-            found = False
-            while current is not None:
-                if current.data == value:
-                    found = True
-                    break
-                prev = current
-                current = current.next
-
-            # Unlink node if match was found
-            if found:
-                prev.next = current.next
-                print(f"{value} is deleted from LinkedList.")
-                input("Press Enter to continue...")
-                clear_screen()
+    # Search for a value in the linked list.
+    def search(self):
+        print("-" * 10, "Search value in Linked List", "-" * 10)
+        loop = "y"
+        while (loop == "y"):
+            if((self.head == None)):
+                print("Linked List is empty!!!\n")
+                break
             else:
-                print("Data not found!!!")
-                input("Press Enter to continue...")
-                clear_screen()
+                value = int(input("Which value you want to search:"))
+                current = self.head
+                counter = 0
+                found = False
+                while (current != None):
+                    if (current.data == value):
+                        print(value, "is found in ",counter," Index.\n")
+                        found = True
+                        break
+                    else:
+                        counter += 1
+                        current = current.next
+                if(found == False):
+                    print("Value not found in Linked List!!!\n")
+            loop = input("Do you want to search more value(y / n):")
 
 
+    # Insert a new value at a specified position.
+    def insert_at(self):
+        print("-" * 10, "Insert value at any position in Linked List", "-" * 10)
+        loop = "y"
+        current = self.head
+        counter = 0
+        while (current != None):
+            counter += 1
+            current = current.next
+
+        while (loop == "y"):
+            value = int(input("Enter a value for Insert in Linked List:"))
+            new_node = Node(value)
+            position = int(input("Enter the position you want to insert that value:"))
+            if(self.head == None):
+                print("Linked List is empty!!!\n")
+            elif(position >= counter):
+                print("Position does not exist in Linked List!!!\n")
+            elif(position < 0):
+                print("Position must be greater than 0!!!\n")
+            elif(position == 0):
+                new_node.next = self.head
+                self.head = new_node
+                print(new_node.data, "insert successfully in ",position,"Position in Linked List.\n")
+            else:
+                current = self.head
+                previous = None
+                counter = 0
+                while(counter != position):
+                    previous = current
+                    current = current.next
+                    counter += 1
+                previous.next = new_node
+                new_node.next = current.next
+                print(new_node.data, "insert successfully in ",position,"Position in Linked List.\n")
+
+            loop = input("Do you insert more value in Linked list(y / n):")
+
+    # Delete a node by its value.
+    def delete_at(self):
+        print("-" * 10, "Delete value at any position in Linked List", "-" * 10)
+        loop = "y"
+        while (loop == "y"):
+            value = int(input("Enter a value for Delete from Linked List:"))
+            if(self.head == None):
+                print("Linked List is empty!!!\n")
+            else:
+                current = self.head
+                previous = None
+                if(current.data == value):
+                    print(current.data, "is deleted in Linked List!!!\n")
+                    self.head = current.next
+                else:
+                    found = False
+                    while (current != None):
+                        if (current.data == value):
+                            found = True
+                            break
+                        else:
+                            previous = current
+                            current = current.next
+                    if(found == False):
+                        print("Value not found in Linked List!!!\n")
+                    else:
+                        print(value, "deleted successfully in Linked List!!!\n")
+                        previous.next = current.next
+            loop = input("Do you want to delete more value in Linked List(y / n):")
+
+
+# Main function to display the menu and control program execution.
 def main():
-    """Main loop controlling the menu CLI interface."""
     loop = 0
-    sl = Linkedlist()
-
-    while loop == 0:
-        # User choices display
-        print("\n--- Linked List Options ---")
-        print("0: Exit")
-        print("1: Insert data (Append)")
-        print("2: Display data")
-        print("3: Insert value at position")
-        print("4: Delete value")
-
-        try:
-            choice = int(input("\nEnter your choice: "))
-        except ValueError:
-            print("Invalid input! Please enter a number.")
-            input("Press Enter to continue...")
+    sl = Linked_list()
+    while(loop == 0):
+        print("=" * 10, "Main Menu", "=" * 10)
+        print("Press 0 for Exit")
+        print("Press 1 for Insert at any position in Linked List.")
+        print("Press 2 for Display all value in Linked List.")
+        print("Press 3 for Search value in Linked List.")
+        print("Press 4 for Insert value at any position in Linked List.")
+        print("Press 5 for Delete value in Linked List.")
+        print("=" * 32,"\n")
+        choise = int(input("Enter your choice:"))
+        if(choise == 0):
+            print("Program End...\n")
+            loop +=1
+        elif(choise == 1):
+            sl.append()
+            input("\nPress Enter to continue...")
             clear_screen()
-            continue
-
-        # Option 0: Exit script
-        if choice == 0:
-            loop += 1
-            print("Program end...\n")
-
-        # Option 1: Append item(s) to list
-        elif choice == 1:
-            loop2 = "y"
-            while loop2.lower() == "y":
-                val = int(input("Enter a value: "))
-                sl.append(val)
-                loop2 = input("Do you want to continue (y/n): ")
-            print()
-            clear_screen()
-
-        # Option 2: Print list content
-        elif choice == 2:
+        elif(choise == 2):
             sl.display()
-            input("Press Enter to continue...")
+            input("\nPress Enter to continue...")
             clear_screen()
-
-        # Option 3: Insert item at custom index
-        elif choice == 3:
-            val = int(input("Enter a value: "))
-            position = int(input("Enter position: "))
-            sl.insert_at(val, position)
+        elif(choise == 3):
+            sl.search()
+            input("\nPress Enter to continue...")
             clear_screen()
-
-        # Option 4: Delete item by value
-        elif choice == 4:
-            val = int(input("Enter value to delete: "))
-            sl.delnode(val)
+        elif(choise == 4):
+            sl.insert_at()
+            input("\nPress Enter to continue...")
             clear_screen()
-
-        # Handle options outside range 0-4
+        elif(choise == 5):
+            sl.delete_at()
+            input("\nPress Enter to continue...")
+            clear_screen()
         else:
-            print("Invalid choice!!!")
-            input("Press Enter to continue...")
+            input("\nInvalid Choice!!!")
             clear_screen()
 
 
-# Entry point trigger
+# Program execution starts from here.
 if __name__ == "__main__":
     main()
